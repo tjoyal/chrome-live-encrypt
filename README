@@ -4,5 +4,5 @@
     + Add
     + Remove
 
-
-    
+# Current compile line
+coffee --compile --bare --watch --output src/js/ coffee/
