@@ -8,7 +8,7 @@ namespace 'ChromeLiveEncrypt', (exports) ->
     @note = ''
 
     constructor: (id) ->
-      console.log('Creating key')
+      @id = id
 
     serialize: ->
       json = {id: @id, name: @name, secret: @secret, note: @note}
