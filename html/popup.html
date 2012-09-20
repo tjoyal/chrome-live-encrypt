@@ -1,51 +1,83 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Popup Page</title>
-    <script src="/lib/jquery-ui-1.8.18/js/jquery-1.7.1.min.js"></script>
-    <script src="/lib/jquery-ui-1.8.18/js/jquery-ui-1.8.18.custom.min.js"></script>
+    <head>
+        <title>Popup Page</title>
+        <script src="/lib/jquery-ui-1.8.18/js/jquery-1.7.1.min.js"></script>
+        <script src="/lib/jquery-ui-1.8.18/js/jquery-ui-1.8.18.custom.min.js"></script>
 
-    <script src="/lib/Nibbler.js"></script>
-    <script src="/src/js/live_encrypt.js"></script>
-    <script src="/src/js/live_encrypt_crypt.js"></script>
+        <!--script src="/lib/Nibbler.js"></script>
+        <script src="/src/js/live_encrypt.js"></script>
+        <script src="/src/js/live_encrypt_crypt.js"></script-->
 
-    <link href="/lib/jquery-ui-1.8.18/css/jquery-ui-1.8.18.custom.css" media="screen" rel="stylesheet" type="text/css" />
-    <script src="/src/js/popup.js"></script>
+        <link href="/lib/jquery-ui-1.8.18/css/jquery-ui-1.8.18.custom.css" media="screen" rel="stylesheet" type="text/css" />
+        <script src="/src/js/popup.js"></script>
+    </head>
+    <body style="width: 600px;">
 
-  </head>
-  <body style="width: 600px;">
+        <h1 id="level">Chrome "Live-Encrypt"</h1>
 
-    <h1 id="level">Chrome "Live-Encrypt"</h1>
+        <div id="tabs">
+            <ul>
+                <li><a href="#tabs-keys">Keys</a></li>
+                <!--li><a href="#tabs-2">Crypt</a></li>
+                <li><a href="#tabs-3">Uncrypt</a></li-->
+            </ul>
 
-    <div id="tabs">
-      <ul>
-        <li><a href="#tabs-keys">Keys</a></li>
-        <li><a href="#tabs-2">Crypt</a></li>
-        <li><a href="#tabs-3">Uncrypt</a></li>
-      </ul>
+            <div id="tabs-keys">
 
-      <div id="tabs-keys">
-        <div id="add-key" class="add-key" style="display:none;">
-          Name : <input class="name" type="text" value="" />
-          <br />
-          Key : <input class="key" type="text" value="" />
-          <br />
-          <button onclick="save_key(this); return false;">Add</button>
+                <button id="new-key">Add Key</button>
+
+                <div id="keys">
+
+                    <div id="keys-template">
+
+                        <table>
+                            <tbody>
+                            <tr>
+                                <th>
+                                    Name:
+                                </th>
+                                <td>
+                                    <input class="name" type="text" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Key:
+                                </th>
+                                <td>
+                                    <input class="key" type="text" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Note:
+                                </th>
+                                <td>
+                                    <input class="note" type="text" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <button class="save">save</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!--div id="tabs-2">
+            <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+            </div>
+            <div id="tabs-3">
+            <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+            <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+            </div-->
         </div>
-        
-        <div id="keys"></div>
 
-        <span id="add-key-btn"  onclick="add_key();return false;">Add Key</span>
-
-      </div>
-      <div id="tabs-2">
-        <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
-      </div>
-      <div id="tabs-3">
-        <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-        <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
-      </div>
-    </div>
-  
-  </body>
+    </body>
 </html>
