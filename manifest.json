@@ -9,7 +9,7 @@
   },
   "content_scripts": [{
     "matches": ["http://*/*", "https://*/*", "file://*"],
-    "js": ["lib/jquery-ui-1.8.18/js/jquery-1.7.1.min.js", "src/js/context/context.js"],
+    "js": ["lib/jquery-ui-1.8.18/js/jquery-1.7.1.min.js", "js/src/context/context.js"],
     "css": []
   }],
   "permissions": [
