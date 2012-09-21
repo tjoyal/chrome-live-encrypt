@@ -2,20 +2,16 @@ describe("ChromeLiveEncrypt.Key", function() {
   var key;
 
   beforeEach(function() {
-    key = new ChromeLiveEncrypt.Key(1);
-    key.name = 'Name1';
-    key.secret = 'Secret1';
-    key.note = 'Note1';
+
   });
 
   it("should be able to instanciate correctly", function() {
-    id = 5;
-    key = new ChromeLiveEncrypt.Key(id);
-    expect(key.id).toEqual(id);
+    key = new ChromeLiveEncrypt.Key();
+    expect(key.id).not.toBeUndefined();
   });
 
   it("should be able to serialize/unserialize", function() {
-    key1 = key;
+    key1 = key_factory(1);
     skey1 = key1.serialize();
     key2 = ChromeLiveEncrypt.Key.unserialize(skey1)
 

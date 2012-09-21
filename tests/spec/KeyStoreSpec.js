@@ -17,10 +17,10 @@ describe("ChromeLiveEncrypt.KeyStore", function() {
 
       store.reset();
 
-      store.add_key(key_factory(1));
-      store.add_key(key_factory(2));
-      store.add_key(key_factory(3));
-      store.add_key(key_factory(4));
+      for (i in [1,2,3,4]) {
+        key = key_factory(i);
+        store.add_key(key);
+      }
     });
 
     it("should be contain some keys", function() {
@@ -34,19 +34,21 @@ describe("ChromeLiveEncrypt.KeyStore", function() {
 
     it("should be able to find an item", function() {
 
-      expect( store.find(5) ).toBeUndefined();
+      expect( store.find_by_name('not_existing') ).toBeUndefined();
 
-      key = store.find(3);
+      key = store.find_by_name( 'Name1' );
+      console.log(key);
       expect( key ).not.toBeUndefined();
-      expect( key_factory_validation(3, key) ).toBe(true);
+      expect( key_factory_validation(key, 1) ).toBe(true);
     });
 
     it("should be able to add an item", function() {
       store.add_key(key_factory(5));
       expect(store.get_keys().length).toBe(5);
 
-      last = store.get_keys()[ store.get_keys().length - 1 ];
-      expect( key_factory_validation(5, last) ).toBe(true);
+      key = store.find_by_name( 'Name5' );
+      expect( key ).not.toBeUndefined();
+      expect( key_factory_validation(key, 5) ).toBe(true);
     });
   });
 

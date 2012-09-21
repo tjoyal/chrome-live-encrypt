@@ -6,17 +6,16 @@ beforeEach(function() {
 
 });
 
-var key_factory = function(id) {
-  key = new ChromeLiveEncrypt.Key(id);
-  key.name = 'Name' + id;
-  key.secret = 'Secret' + id;
-  key.note = 'Note' + id;
+var key_factory = function(number) {
+  key = new ChromeLiveEncrypt.Key();
+  key.name = 'Name' + number;
+  key.secret = 'Secret' + number;
+  key.note = 'Note' + number;
   return key;
 }
 
-var key_factory_validation = function(id, key) {
-  return key.id === id &&
-    key.name === ("Name" + id) &&
-    key.secret === ("Secret" + id) &&
-    key.note === ("Note" + id)
+var key_factory_validation = function(key, number) {
+  return key.name === ("Name" + number) &&
+    key.secret === ("Secret" + number) &&
+    key.note === ("Note" + number)
 }

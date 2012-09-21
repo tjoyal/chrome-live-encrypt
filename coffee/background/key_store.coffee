@@ -39,3 +39,10 @@ namespace 'ChromeLiveEncrypt', (exports) ->
           return key
 
       return undefined
+
+    @find_by_name: (name) ->
+      for key in @get_keys()
+        if key.name == name
+          return key
+
+      return undefined
