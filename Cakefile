@@ -10,4 +10,4 @@ task 'build', 'Build project from coffee/*.coffee to src/js/*.js', ->
     console.log stdout + stderr
 
 task 'build-watch', 'Build and watch project from coffee/*.coffee to src/js/*.js', ->
-  spawn 'coffee', ['--compile', '--bare', '--watch', '--output', 'src/js/', 'coffee/'], customFds: [0..2]
+  spawn 'coffee', ['--compile', '--bare', '--watch', '--output', 'js/', 'coffee/'], customFds: [0..2]
