@@ -13,9 +13,9 @@ namespace 'ChromeLiveEncrypt', (exports) ->
     load_keys: ->
 
       # todo : replace me with actual loading
-      clone = $("#keys-template").clone()
-      clone.show()
-      $('#keys').append(clone)
+#      clone = $("#keys-template").clone()
+#      clone.show()
+#      $('#keys').append(clone)
 
 
 
