@@ -10,8 +10,8 @@
 $(document).ready ->
   ChromeLiveEncrypt.KeyStore.reset();
 
-  for i in [1,2,3,4]
-    key = ChromeLiveEncrypt.Key.new()
+  for i in [1,2]
+    key = new ChromeLiveEncrypt.Key()
     key.name = 'Name' + i
     key.secret = 'Secret' + i
     key.note = 'Note' + i
