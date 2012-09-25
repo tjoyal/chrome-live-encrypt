@@ -6,5 +6,7 @@
     + Add
     + Remove
 
+- haml templates
+
 # Current compile line
 coffee --compile --bare --watch --output src/js/ coffee/

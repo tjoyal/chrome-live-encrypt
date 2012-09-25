@@ -1,85 +1,178 @@
 <!doctype html>
 <html>
-    <head>
-        <title>Popup Page</title>
-        <script src="/lib/jquery-ui-1.8.18/js/jquery-1.7.1.min.js"></script>
-        <script src="/lib/jquery-ui-1.8.18/js/jquery-ui-1.8.18.custom.min.js"></script>
+  <head>
+    <title>Popup Page</title>
+    <script src="../lib/jquery-ui-1.8.18/js/jquery-1.7.1.min.js"></script>
+    <script src="../lib/jquery-ui-1.8.18/js/jquery-ui-1.8.18.custom.min.js"></script>
 
-        <link href="/lib/jquery-ui-1.8.18/css/jquery-ui-1.8.18.custom.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="../lib/jquery-ui-1.8.18/css/jquery-ui-1.8.18.custom.css" media="screen" rel="stylesheet" type="text/css" />
 
-        <!-- applications requirements -->
-        <script src="/js/src/namespace.js"></script>
-        <script src="/js/src/ChromeLiveEncrypt/Key.js"></script>
-        <script src="/js/src/ChromeLiveEncrypt/KeyStore.js"></script>
+    <!-- applications requirements -->
+    <script src="../js/src/namespace.js"></script>
+    <script src="../js/src/ChromeLiveEncrypt/Key.js"></script>
+    <script src="../js/src/ChromeLiveEncrypt/KeyStore.js"></script>
 
-        <script src="/js/src/popup.js"></script>
-    </head>
-    <body style="width: 600px;">
+    <script src="../js/src/popup.js"></script>
+  </head>
+  <body style="width: 600px;">
 
-        <h1 id="level">Chrome "Live-Encrypt"</h1>
+    <h1 id="level">Chrome "Live-Encrypt"</h1>
 
-        <div id="tabs">
-            <ul>
-                <li><a href="#tabs-keys">Keys</a></li>
-                <!--li><a href="#tabs-2">Crypt</a></li>
-                <li><a href="#tabs-3">Uncrypt</a></li-->
-            </ul>
+    <div id="tabs">
+      <ul>
+          <li><a href="#tabs-keys">Keys</a></li>
+          <!--li><a href="#tabs-2">Crypt</a></li>
+          <li><a href="#tabs-3">Uncrypt</a></li-->
+      </ul>
 
-            <div id="tabs-keys">
+      <div id="tabs-keys">
 
-                <button id="new-key" disabled="disabled">Add Key</button>
+        <button id="new-key" disabled="disabled">Add New Key</button>
 
-                <div id="keys">
+        <div id="keys">
 
-                    <div id="keys-template">
+          <div id="keys-template">
 
-                        <table>
-                            <tbody>
-                            <tr>
-                                <th>
-                                    Name:
-                                </th>
-                                <td>
-                                    <input class="name" type="text" value="" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Key:
-                                </th>
-                                <td>
-                                    <input class="secret" type="text" value="" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Note:
-                                </th>
-                                <td>
-                                    <input class="note" type="text" value="" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <button class="save" disabled="disabled">save</button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            <table class="section new">
+              <tbody>
+              <tr>
+                <th>
+                  Name:
+                </th>
+                <td>
+                  <input class="name" type="text" value="" />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Key:
+                </th>
+                <td>
+                  <input class="secret" type="text" value="" />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Note:
+                </th>
+                <td>
+                  <input class="note" type="text" value="" />
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <button class="create" disabled="disabled">create</button>
+                  <button class="cancel" disabled="disabled">cancel</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
 
-                </div>
+            <table class="section edit">
+              <tbody>
+              <tr>
+                <th>
+                  id:
+                </th>
+                <td>
+                  <span class="id" />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Name:
+                </th>
+                <td>
+                  <input class="name" type="text" value="" />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Key:
+                </th>
+                <td>
+                  <input class="secret" type="text" value="" />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Note:
+                </th>
+                <td>
+                  <input class="note" type="text" value="" />
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <button class="save" disabled="disabled">save</button>
+                  <button class="cancel" disabled="disabled">cancel</button>
+                  <button class="remove" disabled="disabled">remove</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
 
+            <table class="section show">
+              <tbody>
+              <tr>
+                <th>
+                  id:
+                </th>
+                <td>
+                  <span class="id" />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Name:
+                </th>
+                <td>
+                  <span class="name" />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Key:
+                </th>
+                <td>
+                  <span class="secret" />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Note:
+                </th>
+                <td>
+                  <span class="note" />
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <button class="edit" disabled="disabled">edit</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
 
-            </div>
-            <!--div id="tabs-2">
-            <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
-            </div>
-            <div id="tabs-3">
-            <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-            <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
-            </div-->
         </div>
 
-    </body>
+
+      </div>
+      <!--div id="tabs-2">
+      <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+      </div>
+      <div id="tabs-3">
+      <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+      <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+      </div-->
+    </div>
+
+
+
+    <div style="text-align: right;">
+      <a href="popup.html" target="_blank">expose</a>
+    </div>
+
+  </body>
 </html>
