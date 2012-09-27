@@ -33,6 +33,18 @@ namespace 'ChromeLiveEncrypt', (exports) ->
 
       localStorage.setItem("keys", str )
 
+    @remove: (id) ->
+      tmp = []
+      found = false
+      console.log('remove', id, @get_keys())
+      for key in @get_keys()
+        if key.id != id
+          tmp.push(key)
+        else
+          found = true
+      @set_keys(tmp)
+      found
+
     @find: (id) ->
       for key in @get_keys()
         if key.id == id

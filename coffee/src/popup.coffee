@@ -3,7 +3,7 @@ namespace 'ChromeLiveEncrypt', (exports) ->
   class exports.Popup
 
     constructor: ->
-      console.log(1)
+      # nothing
 
     init: ->
       $("#tabs").tabs()
@@ -13,15 +13,24 @@ namespace 'ChromeLiveEncrypt', (exports) ->
 
     load_keys: ->
       for key in exports.KeyStore.get_keys()
-        @element_new({name: key.name, secret: key.secret, note: key.note})
+        @element_new({id: key.id, name: key.name, secret: key.secret, note: key.note})
 
-    element_new: (data, mode = 'show') ->
+    element_new: (data, options = {}) ->
+
+      mode = options.mode || 'show'
+      direction = options.direction || 'last'
+
       element = $("#keys-template").clone()
       element.attr('id', '')
       element.data(data)
       element.show()
       @element_mode(element, mode)
-      $('#keys').append(element)
+
+      if direction == "first"
+        $('#keys').prepend(element)
+      if direction == "last"
+        $('#keys').append(element)
+
 
     element_reload: (element) ->
       $('input.name', element).val( element.data('name') )
@@ -40,7 +49,7 @@ namespace 'ChromeLiveEncrypt', (exports) ->
       $('.section.' + mode, element).show()
 
     element_remove: (element) ->
-      #todo : Remove element from store
+      tmp = exports.KeyStore.remove( element.data('id') )
       element.remove()
 
     element_save: (element) ->
@@ -52,7 +61,7 @@ namespace 'ChromeLiveEncrypt', (exports) ->
     live_bind: ->
 
       $('#new-key').click =>
-        @element_new({}, 'new')
+        @element_new({}, {mode: 'new', direction: 'first'})
 
       $('#keys .key button').live 'click', (event) =>
         button = $(event.target)

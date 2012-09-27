@@ -3,7 +3,7 @@ namespace 'ChromeLiveEncrypt', (exports) ->
   class exports.Key
 
     # todo: make this gen uuid + check
-    nextAvailableId = 1
+    nextAvailableId = 1000
 
     @id = ''
     @name = ''
