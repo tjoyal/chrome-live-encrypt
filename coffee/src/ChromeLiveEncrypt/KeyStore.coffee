@@ -36,12 +36,22 @@ namespace 'ChromeLiveEncrypt', (exports) ->
     @remove: (id) ->
       tmp = []
       found = false
-      console.log('remove', id, @get_keys())
       for key in @get_keys()
         if key.id != id
           tmp.push(key)
         else
           found = true
+      @set_keys(tmp)
+      found
+
+    @update: (key) ->
+      tmp = []
+      found = false
+      for k in @get_keys()
+        if k.id != key.id
+          tmp.push(k)
+        else
+          tmp.push(key)
       @set_keys(tmp)
       found
 

@@ -23,3 +23,37 @@ describe "ChromeLiveEncrypt.Key", ->
 
     expect(key1.note).not.toBeUndefined()
     expect(key1.note).toEqual(key2.note)
+
+
+describe "testing key2", ->
+
+  beforeEach ->
+    ChromeLiveEncrypt.Key2.destroy_all()
+
+  it "should be none keys at the start", ->
+    all = ChromeLiveEncrypt.Key2.all()
+    expect( all.length ).toBe( 0 )
+
+  it "should persist data correctly", ->
+
+    key = new ChromeLiveEncrypt.Key2()
+    key.set('name', 'test1')
+    key.set('secret', 'test2')
+
+    expect( key.get("id") ).toBeUndefined()
+    key.save()
+    expect( key.get("id") ).not.toBeUndefined()
+
+    all = ChromeLiveEncrypt.Key2.all()
+    expect( all.length ).toBe( 1 )
+
+    persisted = all[0]
+    expect( key.get('id') ).toBe( persisted.get('id'))
+
+    expect( persisted.get('name') ).toBe( key.get('name'))
+    expect( persisted.get('name') ).toBe("test1")
+
+    expect( persisted.get('secret') ).toBe( key.get('secret'))
+    expect( persisted.get('secret') ).toBe("test2")
+
+

@@ -13,7 +13,8 @@ namespace 'ChromeLiveEncrypt', (exports) ->
 
     load_keys: ->
       for key in exports.KeyStore.get_keys()
-        @element_new({id: key.id, name: key.name, secret: key.secret, note: key.note})
+        data = @data_from_key(key)
+        @element_new(data)
 
     element_new: (data, options = {}) ->
 
@@ -31,6 +32,8 @@ namespace 'ChromeLiveEncrypt', (exports) ->
       if direction == "last"
         $('#keys').append(element)
 
+    data_from_key: (key) ->
+      {id: key.id, name: key.name, secret: key.secret, note: key.note}
 
     element_reload: (element) ->
       $('input.name', element).val( element.data('name') )
@@ -49,12 +52,34 @@ namespace 'ChromeLiveEncrypt', (exports) ->
       $('.section.' + mode, element).show()
 
     element_remove: (element) ->
-      tmp = exports.KeyStore.remove( element.data('id') )
+      id = element.data('id')
+      if id != undefined
+        exports.KeyStore.remove( id )
       element.remove()
 
     element_save: (element) ->
-      #todo : Update element in store
+      id = element.data('id')
+
+      key
+      if id == undefined
+        # new
+        key = new exports.Key()
+        key.name = element.data('name')
+        key.secret = element.data('secret')
+        key.note = element.data('note')
+        exports.KeyStore.add_key(key)
+      else
+        # update
+        key = exports.KeyStore.find(id)
+        key.name = element.data('name')
+        key.secret = element.data('secret')
+        key.note = element.data('note')
+        exports.KeyStore.update(key)
+
       #todo : Update element data
+      data = @data_from_key(key)
+      element.data(data)
+
       @element_mode(element, 'show')
 
 
@@ -67,6 +92,12 @@ namespace 'ChromeLiveEncrypt', (exports) ->
         button = $(event.target)
         section = $(button).closest('.section')
         element = $(section).closest('.key')
+
+        if section.hasClass('new')
+          if button.hasClass('cancel')
+            @element_remove(element)
+          if button.hasClass('create')
+            @element_save(element)
 
         if section.hasClass('show')
           if button.hasClass('edit')
